@@ -40,6 +40,10 @@ class MoneyOperation
 
     public function divide(Wallet $wallet, Currency $currencyA, int $times): int
     {
+		if ($times == 0) {
+			throw new InvalidArgumentException('Division by zero');
+		}
+
         $a = $this->getCurrencyValueInDefault($wallet, $currencyA);
 
         return $a / $times;
